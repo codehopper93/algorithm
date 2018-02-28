@@ -1,12 +1,12 @@
 /* BFS
-³Êºñ ¿ì¼± Å½»öÀº ±×·¡ÇÁÀÇ ¸ðµç Á¤Á¡µéÀ» Æ¯Á¤ÇÑ ¼ø¼­¿¡ µû¶ó ¹æ¹®ÇÏ´Â ¾Ë°í¸®Áò Áß ÇÏ³ªÀÔ´Ï´Ù.
-ÇöÀç Á¤Á¡°ú ÀÎÁ¢ÇÑ °£¼±µéÀ» °Ë»çÇÏ´Ù°¡ ¹æ¹®ÇÏÁö ¾ÊÀº Á¤Á¡µéÀ» ¹ß°ßÇÏ¸é 
-±× °£¼±À» ÅëÇØ ¹æ¹®ÇÏÁö ¾ÊÀº Á¤Á¡µéÀ» ÀÚ·á±¸Á¶ Å¥¿¡ ³Ö½À´Ï´Ù.
-±×¸®°í Å¥ÀÇ front Á¤Á¡À» ¹æ¹®ÇÏ°í popÇÕ´Ï´Ù.
-¶Ç ÇØ´ç Á¤Á¡¿¡¼­ ÀÎÁ¢ÇÑ °£¼±À» °Ë»çÇØ ¹æ¹®ÇÏÁö ¾ÊÀº Á¤Á¡µéÀ» Å¥¿¡ ³Ö°í ¹æ¹®ÇÏ±â´Â °úÁ¤À» ¹Ýº¹ÇÏ´Ù°¡ 
-´õ ÀÌ»ó ¹æ¹®ÇÒ ¼ö ÀÖ´Â Á¤Á¡ÀÌ ¾øÀ¸¸é Á¾·áÇÕ´Ï´Ù. 
-ÀÌ·¯ÇÑ °úÁ¤À» ¹Ýº¹ÇÏ¿© Å¥¿¡ ´õ ÀÌ»ó Á¤Á¡ÀÌ Á¸ÀçÇÏÁö ¾ÊÀ» ¶§±îÁö 
-½ÇÇàÇÏ¿© ±×·¡ÇÁÀÇ ¸ðµç Á¤Á¡À» ¹æ¹®ÇÏ´Â ¾Ë°í¸®ÁòÀÌ BFS ¾Ë°í¸®ÁòÀÔ´Ï´Ù
+ë„ˆë¹„ ìš°ì„  íƒìƒ‰ì€ ê·¸ëž˜í”„ì˜ ëª¨ë“  ì •ì ë“¤ì„ íŠ¹ì •í•œ ìˆœì„œì— ë”°ë¼ ë°©ë¬¸í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ ì¤‘ í•˜ë‚˜ìž…ë‹ˆë‹¤.
+í˜„ìž¬ ì •ì ê³¼ ì¸ì ‘í•œ ê°„ì„ ë“¤ì„ ê²€ì‚¬í•˜ë‹¤ê°€ ë°©ë¬¸í•˜ì§€ ì•Šì€ ì •ì ë“¤ì„ ë°œê²¬í•˜ë©´ 
+ê·¸ ê°„ì„ ì„ í†µí•´ ë°©ë¬¸í•˜ì§€ ì•Šì€ ì •ì ë“¤ì„ ìžë£Œêµ¬ì¡° íì— ë„£ìŠµë‹ˆë‹¤.
+ê·¸ë¦¬ê³  íì˜ front ì •ì ì„ ë°©ë¬¸í•˜ê³  popí•©ë‹ˆë‹¤.
+ë˜ í•´ë‹¹ ì •ì ì—ì„œ ì¸ì ‘í•œ ê°„ì„ ì„ ê²€ì‚¬í•´ ë°©ë¬¸í•˜ì§€ ì•Šì€ ì •ì ë“¤ì„ íì— ë„£ê³  ë°©ë¬¸í•˜ê¸°ëŠ” ê³¼ì •ì„ ë°˜ë³µí•˜ë‹¤ê°€ 
+ë” ì´ìƒ ë°©ë¬¸í•  ìˆ˜ ìžˆëŠ” ì •ì ì´ ì—†ìœ¼ë©´ ì¢…ë£Œí•©ë‹ˆë‹¤. 
+ì´ëŸ¬í•œ ê³¼ì •ì„ ë°˜ë³µí•˜ì—¬ íì— ë” ì´ìƒ ì •ì ì´ ì¡´ìž¬í•˜ì§€ ì•Šì„ ë•Œê¹Œì§€ 
+ì‹¤í–‰í•˜ì—¬ ê·¸ëž˜í”„ì˜ ëª¨ë“  ì •ì ì„ ë°©ë¬¸í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ì´ BFS ì•Œê³ ë¦¬ì¦˜ìž…ë‹ˆë‹¤
 */
 
 #include<iostream>
@@ -16,20 +16,20 @@
 
 using namespace std;
 
-vector<vector<int>> edge;		//ÀÎÁ¢¸®½ºÆ®·Î ±×·¡ÇÁ ±¸Çö
-vector<bool>visited;				//¹æ¹®Ã¼Å© , true = ¹æ¹®
+vector<vector<int>> edge;		//ì¸ì ‘ë¦¬ìŠ¤íŠ¸ë¡œ ê·¸ëž˜í”„ êµ¬í˜„
+vector<bool>visited;				//ë°©ë¬¸ì²´í¬ , true = ë°©ë¬¸
 
-int N, M;						//N = Á¤Á¡ÀÇ °³¼ö, M = °£¼±ÀÇ °³¼ö
-int u, v;						// u = ½ÃÀÛÁ¤Á¡ , v = µµÂøÁ¤Á¡
+int N, M;						//N = ì •ì ì˜ ê°œìˆ˜, M = ê°„ì„ ì˜ ê°œìˆ˜
+int u, v;						// u = ì‹œìž‘ì •ì  , v = ë„ì°©ì •ì 
 
 void BFS(int current) {
 	queue<int> q;
-	visited[current] = true;		//¹æ¹®ÇÑ°Ç Ã¼Å©
-	q.push(current);				//Å¥¿¡ ³Ö´Â´Ù.
+	visited[current] = true;		//ë°©ë¬¸í•œê±´ ì²´í¬
+	q.push(current);				//íì— ë„£ëŠ”ë‹¤.
 	while (!q.empty()) {
-		int num = q.front();			//front ÀúÀå
+		int num = q.front();			//front ì €ìž¥
 		cout << num << " ";
-		q.pop();						//Å¥ front »©±â
+		q.pop();						//í front ë¹¼ê¸°
 		for (int i = 0; i < edge[num].size(); i++) {
 			int there = edge[num][i];	
 			if (visited[there]) {
