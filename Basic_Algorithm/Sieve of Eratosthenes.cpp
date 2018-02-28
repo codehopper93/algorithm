@@ -1,5 +1,5 @@
 /*
-¿¡¶óÅä½ºÅ×³×½ºÀÇ Ã¼´Â Æ¯Á¤ ¹üÀ§ÀÇ ¼öµéÀÌ ¼Ò¼ö(Prime)ÀÎÁö ¾Æ´ÑÁö¸¦ ÆÇº°ÇÏ´Â ¾Ë°í¸®ÁòÀÔ´Ï´Ù.
+ì—ë¼í† ìŠ¤í…Œë„¤ìŠ¤ì˜ ì²´ëŠ” íŠ¹ì • ë²”ìœ„ì˜ ìˆ˜ë“¤ì´ ì†Œìˆ˜(Prime)ì¸ì§€ ì•„ë‹Œì§€ë¥¼ íŒë³„í•˜ëŠ” ì•Œê³ ë¦¬ì¦˜ì…ë‹ˆë‹¤.
 
 */
 
@@ -10,25 +10,25 @@
 
 using namespace std;
 
-bool isReal[MAXN];			//¼Ò¼ö ÆÇº°À§ÇØ true = ¼Ò¼ö, false = ¼Ò¼öX
+bool isReal[MAXN];			//ì†Œìˆ˜ íŒë³„ìœ„í•´ true = ì†Œìˆ˜, false = ì†Œìˆ˜X
 int idx[MAXN], cnt, num, T, testcase;
 
 void SO_Eratosthenes(int N) {
 	for (int i = 2; i <= N; i++) {
-		isReal[i] = true;			//true·Î ÃÊ±âÈ­
+		isReal[i] = true;			//trueë¡œ ì´ˆê¸°í™”
 	}
 	
-	for (int i = 2; i <= sqrt(N); i++) {		//¾îÂ÷ÇÇ ¼Ò¼ö´Â ¾à¼ö°¡ È¦¼öÀÌ¹Ç·Î ±× ¹İ±îÁö¸¸ °è»êÇÏ¸é µÊ.
+	for (int i = 2; i <= sqrt(N); i++) {		//ì–´ì°¨í”¼ ì†Œìˆ˜ëŠ” ì•½ìˆ˜ê°€ í™€ìˆ˜ì´ë¯€ë¡œ ê·¸ ë°˜ê¹Œì§€ë§Œ ê³„ì‚°í•˜ë©´ ë¨.
 		if (!isReal[i]) {
 			continue;
 		}
-		for (int j = i * 2; j <= N; j += i) {	//±× ¼ıÀÚÀÇ ¹è¼ö¸¦ ´Ù false
+		for (int j = i * 2; j <= N; j += i) {	//ê·¸ ìˆ«ìì˜ ë°°ìˆ˜ë¥¼ ë‹¤ false
 			isReal[j] = false;
 		}
 	}
 }
 int main() {
-	SO_Eratosthenes(MAXN-1);			//¿¡¶óÅä½ºÅ×³×½º
+	SO_Eratosthenes(MAXN-1);			//ì—ë¼í† ìŠ¤í…Œë„¤ìŠ¤
 	cin >> testcase;
 
 	while (testcase != T) {
