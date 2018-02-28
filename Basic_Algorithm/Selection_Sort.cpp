@@ -1,29 +1,29 @@
 /*
-¼±ÅÃ Á¤·ÄÀº ¸Å Â÷·Ê¸¶´Ù Á¤·ÄµÇÁö ¾ÊÀº ¿ø¼ÒµéÀ» ¸ðµÎ È®ÀÎÇÏ¿© °¢ ÀÎµ¦½º¿¡ ¸Â´Â ¿ø¼Ò¸¦ ¼±ÅÃÇÏ¿© ÇØ´ç ÀÎµ¦½ºÀÇ ¿ø¼Ò¿Í ±³È¯ÇØÁÖ´Â Á¤·ÄÀÔ´Ï´Ù.
-¸Å Â÷·Ê¸¶´Ù ³²Àº ¿ø¼ÒµéÀ» ¸ðµÎ È®ÀÎÇÏ±â ¶§¹®¿¡ ½Ã°£ º¹Àâµµ´Â ÃÖ¾ÇÀÇ ¿¬»ê È½¼ö³ª Æò±Õ ¿¬»ê È½¼ö³ª O(N^2)ÀÔ´Ï´Ù.
+ì„ íƒ ì •ë ¬ì€ ë§¤ ì°¨ë¡€ë§ˆë‹¤ ì •ë ¬ë˜ì§€ ì•Šì€ ì›ì†Œë“¤ì„ ëª¨ë‘ í™•ì¸í•˜ì—¬ ê° ì¸ë±ìŠ¤ì— ë§žëŠ” ì›ì†Œë¥¼ ì„ íƒí•˜ì—¬ í•´ë‹¹ ì¸ë±ìŠ¤ì˜ ì›ì†Œì™€ êµí™˜í•´ì£¼ëŠ” ì •ë ¬ìž…ë‹ˆë‹¤.
+ë§¤ ì°¨ë¡€ë§ˆë‹¤ ë‚¨ì€ ì›ì†Œë“¤ì„ ëª¨ë‘ í™•ì¸í•˜ê¸° ë•Œë¬¸ì— ì‹œê°„ ë³µìž¡ë„ëŠ” ìµœì•…ì˜ ì—°ì‚° íšŸìˆ˜ë‚˜ í‰ê·  ì—°ì‚° íšŸìˆ˜ë‚˜ O(N^2)ìž…ë‹ˆë‹¤.
 
 */
 #include<iostream>
 #include<vector>
 
-#define MAXN 5005			//ÃÖ´ëÄ¡ ¼³Á¤
+#define MAXN 5005			//ìµœëŒ€ì¹˜ ì„¤ì •
 
 using namespace std;
 
 int arr[MAXN];
 int N;
-//À§Ä¡ ¹Ù²Ù±â
+//ìœ„ì¹˜ ë°”ê¾¸ê¸°
 void swap(int &a, int&b) {	
-	int temp;				//ÀÓ½Ã ÀúÀå¼Ò
+	int temp;				//ìž„ì‹œ ì €ìž¥ì†Œ
 	temp = a;
 	a = b;
 	b = temp;
 }
 
-//Selection_SortÇÔ¼ö
+//Selection_Sortí•¨ìˆ˜
 void selection_sort(int *arr, int size) {
 	for (int i = 0; i < size; i++) {
-		int MinN = i;			//ÃÖ¼Ò¼ýÀÚ
+		int MinN = i;			//ìµœì†Œìˆ«ìž
 		for (int j = i + 1; j < size; j++) {
 			if (arr[MinN] > arr[j]) {
 				MinN = j;
