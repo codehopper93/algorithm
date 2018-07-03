@@ -3,171 +3,188 @@ import java.util.Scanner;
 
 public class CustomerManager3 {
 
-	//ê³ ê° ì •ë³´ë¥¼ ì €ì¥í•  ìë£Œêµ¬ì¡° ì„ ì–¸
+	//°í°´ Á¤º¸¸¦ ÀúÀåÇÒ ÀÚ·á±¸Á¶ ¼±¾ğ
 	static ArrayList<Customer> custList = new ArrayList<>();
 
-	//ë¦¬ìŠ¤íŠ¸ ì •ë³´ë¥¼ ì¡°íšŒí•˜ê¸° ìœ„í•´ ì¸ë±ìŠ¤ë¥¼ í•„ìš”ë¡œ í•¨
+	//¸®½ºÆ® Á¤º¸¸¦ Á¶È¸ÇÏ±â À§ÇØ ÀÎµ¦½º¸¦ ÇÊ¿ä·Î ÇÔ
 	static int index = -1;
 
 	static int count = 0;//custList.size()
 
-	//ê¸°ë³¸ ì…ë ¥ì¥ì¹˜ë¡œë¶€í„° ë°ì´í„°ë¥¼ ì…ë ¥ë°›ê¸° ìœ„í•´ Scannerê°ì²´ ìƒì„±
+	//±âº» ÀÔ·ÂÀåÄ¡·ÎºÎÅÍ µ¥ÀÌÅÍ¸¦ ÀÔ·Â¹Ş±â À§ÇØ Scanner°´Ã¼ »ı¼º
 	static Scanner scan = new Scanner(System.in);
 
 	public static void main(String[] args) {
 
 		while(true) {
 			count = custList.size();
-			System.out.printf("\n[INFO] ê³ ê° ìˆ˜ : %d, ì¸ë±ìŠ¤ : %d\n", count, index);
-			System.out.println("ë©”ë‰´ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
-			System.out.println("(I)nsert, (P)revious, (N)ext, " +
+			System.out.printf("\n[INFO] °í°´ ¼ö : %d, ÀÎµ¦½º : %d\n", count, index);
+			System.out.println("¸Ş´º¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+			System.out.println("(A)Allprint, (I)nsert, (P)revious, (N)ext, " +
 					"(C)urrent, (U)pdate, (D)elete, (Q)uit");
-			System.out.print("ë©”ë‰´ ì…ë ¥: ");
+			System.out.print("¸Ş´º ÀÔ·Â: ");
 			String menu = scan.next();
-			menu = menu.toLowerCase();	//ì…ë ¥í•œ ë¬¸ìì—´ì„ ëª¨ë‘ì†Œë¬¸ìë¡œ ë³€í™˜
+			menu = menu.toLowerCase();	//ÀÔ·ÂÇÑ ¹®ÀÚ¿­À» ¸ğµÎ¼Ò¹®ÀÚ·Î º¯È¯
 			switch(menu.charAt(0)) {
+			case 'a':
+				System.out.println("Á¤º¸ ÀüÃ¼¸¦ Ãâ·ÂÇÕ´Ï´Ù.");
+				printAllCustomer();
+				break;
 			case 'i':
-				System.out.println("ê³ ê°ì •ë³´ ì…ë ¥ì„ ì‹œì‘í•©ë‹ˆë‹¤.");
+				System.out.println("°í°´Á¤º¸ ÀÔ·ÂÀ» ½ÃÀÛÇÕ´Ï´Ù.");
 				insertCustomerData();
-				System.out.println("ê³ ê°ì •ë³´ë¥¼ ì…ë ¥í–ˆìŠµë‹ˆë‹¤.");
+				System.out.println("°í°´Á¤º¸¸¦ ÀÔ·ÂÇß½À´Ï´Ù.");
 				break;
 			case 'p' :
-				System.out.println("ì´ì „ ë°ì´í„°ë¥¼ ì¶œë ¥í•©ë‹ˆë‹¤.");
+				System.out.println("ÀÌÀü µ¥ÀÌÅÍ¸¦ Ãâ·ÂÇÕ´Ï´Ù.");
 				if(index <= 0) {
-					System.out.println("ì´ì „ ë°ì´í„°ê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
+					System.out.println("ÀÌÀü µ¥ÀÌÅÍ°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
 				}else {
 					index--;
 					printCustomerData(index);
 				}
 				break;
 			case 'n' :
-				System.out.println("ë‹¤ìŒ ë°ì´í„°ë¥¼ ì¶œë ¥í•©ë‹ˆë‹¤.");
+				System.out.println("´ÙÀ½ µ¥ÀÌÅÍ¸¦ Ãâ·ÂÇÕ´Ï´Ù.");
 				if(index >= count-1) {
-					System.out.println("ë‹¤ìŒ ë°ì´í„°ê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
+					System.out.println("´ÙÀ½ µ¥ÀÌÅÍ°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
 				}else {
 					index++;
 					printCustomerData(index);
 				}
 				break;
 			case 'c' :
-				System.out.println("í˜„ì¬ ë°ì´í„°ë¥¼ ì¶œë ¥í•©ë‹ˆë‹¤.");
+				System.out.println("ÇöÀç µ¥ÀÌÅÍ¸¦ Ãâ·ÂÇÕ´Ï´Ù.");
 				if( (index >= 0) && (index < count)) {
 					printCustomerData(index);
 				}else {
-					System.out.println("ì¶œë ¥í•  ë°ì´í„°ê°€ ì„ íƒë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
+					System.out.println("Ãâ·ÂÇÒ µ¥ÀÌÅÍ°¡ ¼±ÅÃµÇÁö ¾Ê¾Ò½À´Ï´Ù.");
 				}
 				break;			
 			case 'u' :
-				System.out.println("ë°ì´í„°ë¥¼ ìˆ˜ì •í•©ë‹ˆë‹¤.");
+				System.out.println("µ¥ÀÌÅÍ¸¦ ¼öÁ¤ÇÕ´Ï´Ù.");
 				if( (index >= 0) && (index < count)) {
-					System.out.println(index + "ë²ˆì§¸ ë°ì´í„°ë¥¼ ìˆ˜ì •í•©ë‹ˆë‹¤.");
+					System.out.println(index + "¹øÂ° µ¥ÀÌÅÍ¸¦ ¼öÁ¤ÇÕ´Ï´Ù.");
 					updateCustomerData(index);
 				}else {
-					System.out.println("ìˆ˜ì •í•  ë°ì´í„°ê°€ ì„ íƒë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
+					System.out.println("¼öÁ¤ÇÒ µ¥ÀÌÅÍ°¡ ¼±ÅÃµÇÁö ¾Ê¾Ò½À´Ï´Ù.");
 				}
 				break;
 			case 'd' :
-				System.out.println("ë°ì´í„°ë¥¼ ì‚­ì œí•©ë‹ˆë‹¤.");
+				System.out.println("µ¥ÀÌÅÍ¸¦ »èÁ¦ÇÕ´Ï´Ù.");
 				if( (index >= 0) && (index < count)) {
-					System.out.println(index + "ë²ˆì§¸ ë°ì´í„°ë¥¼ ì‚­ì œí•©ë‹ˆë‹¤.");
+					System.out.println(index + "¹øÂ° µ¥ÀÌÅÍ¸¦ »èÁ¦ÇÕ´Ï´Ù.");
 					deleteCustomerData(index);
 				}else {
-					System.out.println("ì‚­ì œí•  ë°ì´í„°ê°€ ì„ íƒë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
+					System.out.println("»èÁ¦ÇÒ µ¥ÀÌÅÍ°¡ ¼±ÅÃµÇÁö ¾Ê¾Ò½À´Ï´Ù.");
 				}
 				break;
 			case 'q' :
-				System.out.println("í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤.");
-				scan.close();	//Scanner ê°ì²´ë¥¼ ë‹«ì•„ì¤€ë‹¤.
-				System.exit(0);	//í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œì‹œí‚¨ë‹¤.
+				System.out.println("ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù.");
+				scan.close();	//Scanner °´Ã¼¸¦ ´İ¾ÆÁØ´Ù.
+				System.exit(0);	//ÇÁ·Î±×·¥À» Á¾·á½ÃÅ²´Ù.
 				break;	
 			default : 
-				System.out.println("ë©”ë‰´ë¥¼ ì˜ ëª» ì…ë ¥í–ˆìŠµë‹ˆë‹¤.");	
+				System.out.println("¸Ş´º¸¦ Àß ¸ø ÀÔ·ÂÇß½À´Ï´Ù.");	
 			}//end switch
 		}//end while
 	}//end main
 
 	public static void insertCustomerData() {
-		System.out.print("ì´ë¦„ : ");
+		System.out.print("ÀÌ¸§ : ");
 		String name = scan.next();
-		System.out.print("ì„±ë³„(M/F) : ");
-		char gender = scan.next().charAt(0);
-		//ë¹„ì–´ìˆìœ¼ë©´ ì¶”ê°€í•˜ëŠ” ê¸°ëŠ¥
+		System.out.print("¼ºº°(M/F) : ");
+		String gender = scan.next();
+		while((!(gender.equals("m"))) && (!(gender.equals("f")))) {
+			System.out.println("ÇÑ±ÛÀÚ¸¸ ÀÔ·ÂÇØÁÖ¼¼¿ä. ¼ºº°ÀÌ Á¦´ë·Î È®ÀÎµÇÁö ¾Ê¾Ò½À´Ï´Ù.");
+			System.out.println("¼ºº°(M/F) :");
+			gender = scan.next();
+		}
 		
-		System.out.print("ì´ë©”ì¼ : ");
+		System.out.print("ÀÌ¸ŞÀÏ : ");
 		String email = scan.next();
 		
-		//ë¹„ì–´ìˆìœ¼ë©´ ì¶”ê°€í•˜ëŠ” ê¸°ëŠ¥
+		//ºñ¾îÀÖÀ¸¸é Ãß°¡ÇÏ´Â ±â´É
 		while(email.isEmpty()) {
-			System.out.println("ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+			System.out.println("´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä.");
 			email = scan.next();
 		}
-		//ì…ë ¥ì—ì„œ @ì™€ .ì´ ì—†ìœ¼ë©´
+		//ÀÔ·Â¿¡¼­ @¿Í .ÀÌ ¾øÀ¸¸é
 		while((!email.contains("@")) || (!email.contains("."))) {
-			System.out.println("í˜•ì‹ì— ë§ì¶° ì…ë ¥í•´ì£¼ì„¸ìš”.");
+			System.out.println("Çü½Ä¿¡ ¸ÂÃç ÀÔ·ÂÇØÁÖ¼¼¿ä.");
 			email = scan.next();
 		}
-		System.out.print("ì¶œìƒë…„ë„ : ");	
+		System.out.print("Ãâ»ı³âµµ : ");	
 		
 		String birthYear = scan.next();
-		
-		while(!IsNumber(birthYear)) {
-			birthYear = scan.next();
-			System.out.println("ìˆ«ìë§Œ ì…ë ¥í•´ì£¼ì„¸ìš”.");
-		}
-		//only ìˆ«ì , 6ìë¦¬ì´ìƒ X
 
-		int birth_num = Integer.parseInt(birthYear);
-		System.out.println(birth_num);
-		while(birth_num > 1e6-1) {
+		//only ¼ıÀÚ , 6ÀÚ¸®ÀÌ»ó X
+		while(!IsNumber(birthYear)) {
+
+			System.out.println("¼ıÀÚ¸¸ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+			birthYear = scan.next();
+
+			if(!IsNumber(birthYear)) {
+				continue;
+			}
+			int birth_num = Integer.parseInt(birthYear);
 			
-			while(!IsNumber(birthYear)) {
+			while(birth_num > 1e6-1) {
+
+				System.out.println("6ÀÚ¸®ÀÇ »ı³â¿ùÀÏÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
 				birthYear = scan.next();
-				System.out.println("ìˆ«ìë§Œ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+				birth_num = Integer.parseInt(birthYear);
+
 			}
 			
-			birth_num = Integer.parseInt(birthYear);
-			System.out.println("6ìë¦¬ì˜ ìƒë…„ì›”ì¼ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
-			birthYear = scan.next();
 		}
+		
 
-		//ì…ë ¥ë°›ì€ ë°ì´í„°ë¡œ ê³ ê° ê°ì²´ë¥¼ ìƒì„±
+		//ÀÔ·Â¹ŞÀº µ¥ÀÌÅÍ·Î °í°´ °´Ã¼¸¦ »ı¼º
 		Customer cust = new Customer(name, gender, email, birthYear);
 
-		//ê³ ê° ê°ì²´ë¥¼ ArrayListì— ì €ì¥
+		//°í°´ °´Ã¼¸¦ ArrayList¿¡ ÀúÀå
 		custList.add(cust);
 	}
 
-	//ê³ ê°ë°ì´í„° ì¶œë ¥
+	//°í°´µ¥ÀÌÅÍ Ãâ·Â
 	public static void printCustomerData(int index) {
 		Customer cust = custList.get(index);
 		System.out.println("==========CUSTOMER INFO================");
-		System.out.println("ì´ë¦„ : " + cust.getName());
-		System.out.println("ì„±ë³„ : " + cust.getGender());
-		System.out.println("ì´ë©”ì¼ : " + cust.getEmail());
-		System.out.println("ì¶œìƒë…„ë„ : " + cust.getBirthYear());
+		System.out.println("ÀÌ¸§ : " + cust.getName());
+		System.out.println("¼ºº° : " + cust.getGender());
+		System.out.println("ÀÌ¸ŞÀÏ : " + cust.getEmail());
+		System.out.println("Ãâ»ı³âµµ : " + cust.getBirthYear());
 		System.out.println("=======================================");
 	}
 
-	//index ìœ„ì¹˜ì˜ ê³ ê°ì •ë³´ë¥¼ ì‚­ì œí•©ë‹ˆë‹¤.
+	//index À§Ä¡ÀÇ °í°´Á¤º¸¸¦ »èÁ¦ÇÕ´Ï´Ù.
 	public static void deleteCustomerData(int index) {
 		custList.remove(index);
 	}
 
-	//index ìœ„ì¹˜ì˜ ê³ ê° ì •ë³´ë¥¼ ìˆ˜ì •í•©ë‹ˆë‹¤.
+	//index À§Ä¡ÀÇ °í°´ Á¤º¸¸¦ ¼öÁ¤ÇÕ´Ï´Ù.
 	public static void updateCustomerData(int index) {
 		Customer cust = custList.get(index);
 		System.out.println("---------UPDATE CUSTOMER INFO----------");
-		System.out.print("ì´ë¦„(" + cust.getName() + ") :");
+		System.out.print("ÀÌ¸§(" + cust.getName() + ") :");
 		cust.setName(scan.next());
 
-		System.out.print("ì„±ë³„(" + cust.getGender() + ") :");
-		cust.setGender(scan.next().charAt(0));
+		System.out.print("¼ºº°(" + cust.getGender() + ") :");
+		cust.setGender(scan.next());
 
-		System.out.print("ì´ë©”ì¼(" + cust.getEmail() + ") :");
+		System.out.print("ÀÌ¸ŞÀÏ(" + cust.getEmail() + ") :");
 		cust.setEmail(scan.next());
 
-		System.out.print("ì¶œìƒë…„ë„(" + cust.getBirthYear() + ") :");
+		System.out.print("Ãâ»ı³âµµ(" + cust.getBirthYear() + ") :");
 		cust.setBirthYear(scan.next());		
+	}
+	public static void printAllCustomer() {
+		int i=0;
+		while(i != count) {
+			printCustomerData(i);
+			i++;
+		}
 	}
 	
 	public static boolean IsNumber(String strNumber) {
@@ -182,7 +199,7 @@ public class CustomerManager3 {
 			}
 		}catch(Exception ex) {
 			
-			System.out.println("ìˆ«ìë§Œ ì…ë ¥í•˜ì„¸ìš”.");
+			System.out.println("¼ıÀÚ¸¸ ÀÔ·ÂÇÏ¼¼¿ä.");
 			
 		}
 		return result;
